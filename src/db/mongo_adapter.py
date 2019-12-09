@@ -4,7 +4,7 @@ from config import Config
 
 
 class MongoAdapter:
-    def __init__(self, conn_string=Config.MONGO_CONNECTION_STRING, conn_alias=Config.CONNECTION_ALIAS, db=Config.MONGO_DB):
+    def __init__(self, conn_string=Config.MONGO_CONNECTION_STRING, conn_alias='news_api', db=Config.MONGO_DB):
 
         # Mongo Connection
         self.db = db

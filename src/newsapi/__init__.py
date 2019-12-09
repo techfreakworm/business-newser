@@ -1,0 +1,1 @@
+from newsapi.data_gatherer import DataGatherer
