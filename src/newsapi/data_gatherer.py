@@ -13,6 +13,7 @@ class DataGatherer:
         res = requests.get(self.business_url + '&pageSize=100&apiKey=' + self.api_key).json()
         total_results = res['totalResults']
 
+        # TODO: create Id by hashing the titles so that there are no duplicate news
         # 100 is the max pagesize for newsapi.org
         if total_results <=100:
             client = MongoAdapter().get_mongo_client()
