@@ -6,7 +6,7 @@ from bson.objectid import ObjectId
 import hashlib
 from util.log import Logger
 from datetime import datetime
-from dateutil.tz import *
+from tzlocal import get_localzone
 from pymongo.errors import DuplicateKeyError
 
 
@@ -48,7 +48,7 @@ class DataGatherer:
         self.total_articles = len(articles)
         for article in articles:
             article['_id'] = ObjectId(hashlib.md5(article['title'].encode()).hexdigest()[8:])
-            article['createdDate'] = datetime.now().astimezone(tzlocal())
+            article['createdDate'] = datetime.now().astimezone(get_localzone())
             try:
                 self.news_collection.insert_one(article)
                 self.inserted_articles = self.inserted_articles + 1
