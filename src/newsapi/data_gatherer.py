@@ -48,7 +48,8 @@ class DataGatherer:
         self.total_articles = len(articles)
         for article in articles:
             article['_id'] = ObjectId(hashlib.md5(article['title'].encode()).hexdigest()[8:])
-            article['createdDate'] = datetime.now().astimezone(get_localzone())
+            tz = get_localzone()
+            article['createdDate'] = tz.localize(datetime.now())
             try:
                 self.news_collection.insert_one(article)
                 self.inserted_articles = self.inserted_articles + 1
