@@ -39,7 +39,7 @@ class DataGatherer:
                     self.api_key).json()
                 self.insert_data_into_db(res['articles'])
         if self.inserted_articles > 0:
-            Logger.info('News data stored successfully!\nTotal articles: {}\nInserted articles: {}'.format(self.total_articles, self.inserted_articles), push_to_slack=True)
+            Logger.info('News data stored successfully!\nTotal articles: {}\nInserted articles: {}'.format(self.total_articles, self.inserted_articles))
         else:
             Logger.info('Total articles: {}\nNot inserted articles: {}'.format(self.total_articles, self.not_inserted_articles))
                 
