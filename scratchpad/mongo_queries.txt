@@ -1,0 +1,36 @@
+db.business.aggregate([
+    {$project: {"url": {$arrayElemAt:[{$split: ["$url" , "/"]}, 2]}}}
+])
+
+db.business.find()
+
+
+db.business.aggregate([
+    {$project: {"url": {$split: ["$url" , "/"]}}}
+])
+
+
+db.business.aggregate([
+    {
+        $project: {
+            "url": {
+                $arrayElemAt:[
+                    {
+                        $split: ["$url" , "/"]
+                     }, 2
+                ]
+            }
+        }
+    }
+    ,
+    {
+    $group: {
+    _id: { url : "$url" },
+    total: {$sum: 1},
+    }
+    }
+//    ,
+//    {
+//          '$count': 'url'
+//        }
+])
