@@ -1,8 +1,6 @@
-from util.selenium_dispatcher import SeleniumDispatcher
+# TODO: Replace individual scraper call with Factory pattern
+
+from scrapers.moneycontrol import MoneyControl
 
 
-sel = SeleniumDispatcher()
-
-driver = sel.get_driver()
-driver.get('https://yahoo.com')
-print('Working fine')
+MoneyControl().run_scraper()
