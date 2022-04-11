@@ -34,3 +34,61 @@ db.business.aggregate([
 //          '$count': 'url'
 //        }
 ])
+
+
+
+db.business.aggregate([
+//    {
+//        $project:
+//        {
+//            "url":
+//            {
+//                $arrayElemAt:
+//                [
+//                    {
+//                        $split:
+//                            [
+//                                "$url" , "/"
+//                            ]
+//                    }, 2
+//                ]
+//            }
+//        }
+//    },
+    {
+        $addFields:
+        {
+            "urlMatch":
+            {
+                $regexMatch:
+                        {
+                            input: "$url",
+                            regex: "moneycontrol"
+                        }
+            }
+        }
+    }
+//    ,
+//    {
+//        $redact:
+//        {
+//           $cond:
+//           {
+//                if:
+//                {
+//                    $eq: ["urlMatch", false]
+//                },
+//                then: "$$PRUNE",
+//                else: "$$DESCEND"
+//           }
+//        }
+//    }
+    ,
+    {
+        $match:
+        {
+            'urlMatch': true
+        }
+    }
+
+])

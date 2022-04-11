@@ -5,3 +5,4 @@ chromedriver/
 .env
 job.log
 run.log
+**/.DS_Store
