@@ -3,8 +3,10 @@ asttokens==2.0.5
 async-generator==1.10
 attrs==21.4.0
 backcall==0.2.0
+beautifulsoup4==4.11.1
 blinker==1.4
 Brotli==1.0.9
+bs4==0.0.1
 certifi==2019.11.28
 cffi==1.15.0
 chardet==3.0.4
@@ -57,6 +59,7 @@ selenium-wire==4.6.3
 six==1.13.0
 sniffio==1.2.0
 sortedcontainers==2.4.0
+soupsieve==2.3.2
 stack-data==0.2.0
 tornado==6.1
 traitlets==5.1.1
